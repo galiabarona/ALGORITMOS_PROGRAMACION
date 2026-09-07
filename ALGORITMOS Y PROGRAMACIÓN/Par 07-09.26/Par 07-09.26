@@ -1,0 +1,55 @@
+// Galia Barona Bustamante 
+// Se solicita elaborar un algoritmo en PSeInt que determine:
+// 1.El número total de días registrados.
+// 2.La temperatura máxima promedio.
+// 3.La temperatura mínima promedio.
+// 4.El número de temperaturas erróneas, considerando como error cada temperatura con valor de 9 grados.
+// 5.El porcentaje que representan las temperaturas erróneas con respecto al total de temperaturas registradas.
+Algoritmo EstacionClimatica
+	Definir tempMax, tempMin Como Real
+	Definir sumaMax, sumaMin, promedioMax, promedioMin Como Real
+	Definir dias, errores, totalTemperaturas Como Entero
+	Definir porcentajeErrores Como Real
+	dias <- 0
+	errores <- 0
+	sumaMax <- 0
+	sumaMin <- 0
+	Escribir 'Ingrese la temperatura maxima:'
+	Leer tempMax
+	Escribir 'Ingrese la temperatura minima:'
+	Leer tempMin
+	Mientras tempMax<>0 O tempMin<>0 Hacer
+		dias <- dias+1
+		Si tempMax=9 Entonces
+			errores <- errores+1
+		SiNo
+			sumaMax <- sumaMax+tempMax
+		FinSi
+		Si tempMin=9 Entonces
+			errores <- errores+1
+		SiNo
+			sumaMin <- sumaMin+tempMin
+		FinSi
+		Escribir 'Ingrese la temperatura maxima:'
+		Leer tempMax
+		Escribir 'Ingrese la temperatura minima:'
+		Leer tempMin
+	FinMientras
+	totalTemperaturas <- dias*2
+	Si dias>0 Entonces
+		promedioMax <- sumaMax/(totalTemperaturas-errores)
+		promedioMin <- sumaMin/(totalTemperaturas-errores)
+		porcentajeErrores <- errores*100/totalTemperaturas
+	SiNo
+		promedioMax <- 0
+		promedioMin <- 0
+		porcentajeErrores <- 0
+	FinSi
+	Escribir '-----------------------------------'
+	Escribir 'Total de dias registrados: ', dias
+	Escribir 'Temperatura maxima promedio: ', promedioMax
+	Escribir 'Temperatura minima promedio: ', promedioMin
+	Escribir 'Numero de temperaturas erroneas: ', errores
+	Escribir 'Porcentaje de temperaturas erroneas: ', porcentajeErrores, '%'
+	Escribir '-----------------------------------'
+FinAlgoritmo
